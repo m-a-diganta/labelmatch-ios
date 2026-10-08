@@ -1,5 +1,34 @@
-// SetNutritionGoalUseCase.swift
-// Saves a goal and makes it the only active goal.
-// The code is added in a later commit.
-
 import Foundation
+
+/// Saves a goal and makes it the one goal that is active.
+struct SetNutritionGoalUseCase {
+    let goalRepository: NutritionGoalRepository
+
+    func execute(_ goal: NutritionGoal) throws -> NutritionGoal {
+        // Rule: a goal needs at least one target or limit.
+        guard goal.hasAnyTarget else {
+            throw SetNutritionGoalError.noTargetsSet
+        }
+
+        // Rule: every number must be in a believable range.
+        try checkRange(goal.proteinMinPerServeGrams, for: .protein)
+        try checkRange(goal.energyMaxPerServeKilojoules, for: .energy)
+        try checkRange(goal.sugarMaxPer100g, for: .sugars)
+        try checkRange(goal.saturatedFatMaxPer100g, for: .saturatedFat)
+        try checkRange(goal.sodiumMaxPer100gMilligrams, for: .sodium)
+
+        // Rule: only one goal is active at a time.
+        var savedGoal = goal
+        savedGoal.isActive = true
+        try goalRepository.save(savedGoal)
+        try goalRepository.setActiveGoal(id: savedGoal.id)
+        return savedGoal
+    }
+
+    private func checkRange(_ value: Double?, for nutrient: Nutrient) throws {
+        guard let value = value else { return }
+        if !nutrient.targetRange.contains(value) {
+            throw SetNutritionGoalError.implausibleTarget(nutrient: nutrient)
+        }
+    }
+}
