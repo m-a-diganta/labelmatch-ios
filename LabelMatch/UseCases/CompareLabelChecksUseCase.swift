@@ -8,7 +8,7 @@ struct ComparisonLine: Equatable {
 }
 
 struct ComparisonResult: Equatable {
-    /// nil means both products are equally good for the goal.
+    /// nil means the two products are equal for the goal.
     let winner: LabelCheck?
     let explanation: String
     let lines: [ComparisonLine]
@@ -40,19 +40,36 @@ struct CompareLabelChecksUseCase {
             return ComparisonResult(winner: winner, explanation: text, lines: lines)
         }
 
-        // Same verdict, so the one with fewer problems wins.
+        // Same verdict, so the one with fewer problems is the better one.
         let firstProblems = problemCount(first)
         let secondProblems = problemCount(second)
         if firstProblems != secondProblems {
             let firstWins = firstProblems < secondProblems
             let winner = firstWins ? first : second
-            let text = "\(winner.productName) fits your goal slightly better. It has fewer numbers close to or over your limits."
+            let text: String
+            if winner.verdict == .notSuitable {
+                text = "Neither product fits your goal, but \(winner.productName) is closer. It has fewer numbers over your limits."
+            } else {
+                text = "\(winner.productName) fits your goal slightly better. It has fewer numbers close to or over your limits."
+            }
             return ComparisonResult(winner: winner, explanation: text, lines: lines)
         }
 
         return ComparisonResult(winner: nil,
-                                explanation: "Both products fit your goal equally well.",
+                                explanation: tieExplanation(for: first.verdict),
                                 lines: lines)
+    }
+
+    // What to say when the two products are equal.
+    private func tieExplanation(for verdict: Verdict) -> String {
+        switch verdict {
+        case .suitable:
+            return "Both products fit your goal equally well."
+        case .caution:
+            return "Both products are suitable with caution. They are equally close to your limits."
+        case .notSuitable:
+            return "Neither product fits your goal. Both go over your limits equally."
+        }
     }
 
     private func problemCount(_ check: LabelCheck) -> Int {

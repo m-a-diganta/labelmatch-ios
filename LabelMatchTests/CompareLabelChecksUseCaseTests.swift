@@ -65,4 +65,29 @@ final class CompareLabelChecksUseCaseTests: XCTestCase {
             XCTAssertEqual(error as? CompareLabelChecksError, .fewerThanTwoChecks)
         }
     }
+    
+    func test_compare_saysNeitherFits_whenBothProductsAreNotSuitable() throws {
+        let goalID = UUID()
+        let first = TestData.check(name: "Biscuit A", verdict: .notSuitable, goalID: goalID)
+        let second = TestData.check(name: "Biscuit B", verdict: .notSuitable, goalID: goalID)
+
+        let result = try useCase.execute(checks: [first, second])
+
+        XCTAssertNil(result.winner)
+        XCTAssertEqual(result.explanation, "Neither product fits your goal. Both go over your limits equally.")
+    }
+
+    func test_compare_namesTheCloserProduct_whenBothAreNotSuitable() throws {
+        let goalID = UUID()
+        let closer = TestData.check(name: "Biscuit A", verdict: .notSuitable, goalID: goalID,
+                                    reasons: [TestData.reason(severity: .notSuitable)])
+        let further = TestData.check(name: "Biscuit B", verdict: .notSuitable, goalID: goalID,
+                                     reasons: [TestData.reason(severity: .notSuitable),
+                                               TestData.reason(severity: .notSuitable)])
+
+        let result = try useCase.execute(checks: [further, closer])
+
+        XCTAssertEqual(result.winner?.productName, "Biscuit A")
+        XCTAssertTrue(result.explanation.hasPrefix("Neither product fits your goal"))
+    }
 }
