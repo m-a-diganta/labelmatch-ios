@@ -25,7 +25,8 @@ final class AppEnvironment: ObservableObject {
         self.checkRepository = checkRepository
         self.inboxRepository = FileSharedInboxRepository()
         self.widgetReloader = widgetReloader
-        self.setGoalUseCase = SetNutritionGoalUseCase(goalRepository: goalRepository)
+        self.setGoalUseCase = SetNutritionGoalUseCase(goalRepository: goalRepository,
+                                                               widgetReloader: widgetReloader)
         self.readPanelUseCase = ReadNutritionPanelUseCase(reader: VisionNutritionPanelReader())
         self.assessUseCase = AssessLabelForGoalUseCase(goalRepository: goalRepository,
                                                        checkRepository: checkRepository,
