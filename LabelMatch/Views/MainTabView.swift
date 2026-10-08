@@ -1,13 +1,17 @@
 import SwiftUI
 
-/// The tab bar. More tabs are added in later commits.
+/// The tab bar that holds the screens.
 struct MainTabView: View {
     @StateObject private var goalViewModel: GoalSetupViewModel
     @StateObject private var checkViewModel: LabelCheckViewModel
+    @StateObject private var historyViewModel: HistoryViewModel
+    @StateObject private var compareViewModel: CompareViewModel
 
     init(environment: AppEnvironment) {
         _goalViewModel = StateObject(wrappedValue: environment.makeGoalSetupViewModel())
         _checkViewModel = StateObject(wrappedValue: environment.makeLabelCheckViewModel())
+        _historyViewModel = StateObject(wrappedValue: environment.makeHistoryViewModel())
+        _compareViewModel = StateObject(wrappedValue: environment.makeCompareViewModel())
     }
 
     var body: some View {
@@ -15,6 +19,16 @@ struct MainTabView: View {
             LabelCheckFlowView(viewModel: checkViewModel)
                 .tabItem {
                     Label("Check", systemImage: "camera.viewfinder")
+                }
+
+            CompareView(viewModel: compareViewModel)
+                .tabItem {
+                    Label("Compare", systemImage: "arrow.left.arrow.right")
+                }
+
+            HistoryView(viewModel: historyViewModel)
+                .tabItem {
+                    Label("History", systemImage: "clock")
                 }
 
             GoalSetupView(viewModel: goalViewModel)

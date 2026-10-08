@@ -12,6 +12,7 @@ final class AppEnvironment: ObservableObject {
     let setGoalUseCase: SetNutritionGoalUseCase
     let readPanelUseCase: ReadNutritionPanelUseCase
     let assessUseCase: AssessLabelForGoalUseCase
+    let compareUseCase: CompareLabelChecksUseCase
 
     init() {
         let persistence = PersistenceController()
@@ -29,6 +30,7 @@ final class AppEnvironment: ObservableObject {
         self.assessUseCase = AssessLabelForGoalUseCase(goalRepository: goalRepository,
                                                        checkRepository: checkRepository,
                                                        widgetReloader: widgetReloader)
+        self.compareUseCase = CompareLabelChecksUseCase()
     }
 
     func makeGoalSetupViewModel() -> GoalSetupViewModel {
@@ -40,5 +42,14 @@ final class AppEnvironment: ObservableObject {
         return LabelCheckViewModel(readUseCase: readPanelUseCase,
                                    assessUseCase: assessUseCase,
                                    inboxRepository: inboxRepository)
+    }
+
+    func makeHistoryViewModel() -> HistoryViewModel {
+        return HistoryViewModel(checkRepository: checkRepository)
+    }
+
+    func makeCompareViewModel() -> CompareViewModel {
+        return CompareViewModel(checkRepository: checkRepository,
+                                compareUseCase: compareUseCase)
     }
 }
