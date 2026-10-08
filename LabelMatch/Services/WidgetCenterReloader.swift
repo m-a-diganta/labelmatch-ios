@@ -1,5 +1,8 @@
-// WidgetCenterReloader.swift
-// Asks WidgetKit to refresh the widgets.
-// The code is added in a later commit.
+import WidgetKit
 
-import Foundation
+/// Asks WidgetKit to refresh the widgets.
+struct WidgetCenterReloader: WidgetReloading {
+    func reloadWidgets() {
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+}
