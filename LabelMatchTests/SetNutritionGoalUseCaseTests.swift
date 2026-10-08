@@ -4,12 +4,15 @@ import XCTest
 final class SetNutritionGoalUseCaseTests: XCTestCase {
 
     private var goalRepository: MockNutritionGoalRepository!
+    private var widgetReloader: MockWidgetReloader!
     private var useCase: SetNutritionGoalUseCase!
 
     override func setUp() {
         super.setUp()
         goalRepository = MockNutritionGoalRepository()
-        useCase = SetNutritionGoalUseCase(goalRepository: goalRepository)
+        widgetReloader = MockWidgetReloader()
+        useCase = SetNutritionGoalUseCase(goalRepository: goalRepository,
+                                          widgetReloader: widgetReloader)
     }
 
     func test_setGoal_savesAndActivatesTheGoal_whenProteinTargetIsValid() throws {
@@ -22,6 +25,12 @@ final class SetNutritionGoalUseCaseTests: XCTestCase {
         XCTAssertEqual(goalRepository.activeID, goal.id)
     }
 
+    func test_setGoal_reloadsTheWidgets_whenTheGoalIsSaved() throws {
+        _ = try useCase.execute(NutritionGoal(name: "Build muscle", proteinMinPerServeGrams: 30))
+
+        XCTAssertEqual(widgetReloader.reloadCount, 1)
+    }
+
     func test_setGoal_fails_whenNoTargetsAreSet() {
         let goal = NutritionGoal(name: "Empty goal")
 
@@ -29,6 +38,12 @@ final class SetNutritionGoalUseCaseTests: XCTestCase {
             XCTAssertEqual(error as? SetNutritionGoalError, .noTargetsSet)
         }
         XCTAssertTrue(goalRepository.goals.isEmpty)
+    }
+
+    func test_setGoal_doesNotReloadTheWidgets_whenTheGoalIsRejected() {
+        _ = try? useCase.execute(NutritionGoal(name: "Empty goal"))
+
+        XCTAssertEqual(widgetReloader.reloadCount, 0)
     }
 
     func test_setGoal_acceptsAnAllergenOnlyGoal() throws {

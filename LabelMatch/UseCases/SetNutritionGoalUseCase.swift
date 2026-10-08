@@ -1,8 +1,10 @@
 import Foundation
 
 /// Saves a goal and makes it the one goal that is active.
+/// The widgets are refreshed so they show the new goal.
 struct SetNutritionGoalUseCase {
     let goalRepository: NutritionGoalRepository
+    let widgetReloader: WidgetReloading
 
     func execute(_ goal: NutritionGoal) throws -> NutritionGoal {
         // Rule: a goal needs at least one target or limit.
@@ -22,6 +24,8 @@ struct SetNutritionGoalUseCase {
         savedGoal.isActive = true
         try goalRepository.save(savedGoal)
         try goalRepository.setActiveGoal(id: savedGoal.id)
+
+        widgetReloader.reloadWidgets()
         return savedGoal
     }
 
