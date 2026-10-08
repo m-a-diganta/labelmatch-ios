@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ECBF72433077B02F001F2487 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBF72423077B02F001F2487 /* WidgetKit.framework */; };
+		ECBF72453077B02F001F2487 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBF72443077B02F001F2487 /* SwiftUI.framework */; };
+		ECBF72503077B032001F2487 /* LabelMatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		EC993893307794F100A290AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,17 +27,69 @@
 			remoteGlobalIDString = EC993884307794F000A290AC;
 			remoteInfo = LabelMatch;
 		};
+		ECBF724E3077B032001F2487 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC99387D307794F000A290AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECBF723F3077B02F001F2487;
+			remoteInfo = LabelMatchWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ECBF72553077B032001F2487 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				ECBF72503077B032001F2487 /* LabelMatchWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EC993885307794F000A290AC /* LabelMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabelMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC993892307794F100A290AC /* LabelMatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LabelMatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC99389C307794F100A290AC /* LabelMatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LabelMatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LabelMatchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECBF72423077B02F001F2487 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		ECBF72443077B02F001F2487 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		ECED93193077B37A005E2479 /* LabelMatchWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LabelMatchWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		ECBF72513077B032001F2487 /* Exceptions for "LabelMatchWidget" folder in "LabelMatchWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */;
+		};
+		ECBF725E3077B1E1001F2487 /* Exceptions for "LabelMatch" folder in "LabelMatchWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Domain/LabelCheck.swift,
+				Domain/NutritionGoal.swift,
+				Domain/NutritionPanelValues.swift,
+				Domain/Protocols.swift,
+				Repositories/CoreDataLabelCheckRepository.swift,
+				Repositories/CoreDataNutritionGoalRepository.swift,
+				Services/AppGroup.swift,
+				Services/PersistenceController.swift,
+			);
+			target = ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EC993887307794F000A290AC /* LabelMatch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				ECBF725E3077B1E1001F2487 /* Exceptions for "LabelMatch" folder in "LabelMatchWidgetExtension" target */,
+			);
 			path = LabelMatch;
 			sourceTree = "<group>";
 		};
@@ -43,6 +101,14 @@
 		EC99389F307794F100A290AC /* LabelMatchUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LabelMatchUITests;
+			sourceTree = "<group>";
+		};
+		ECBF72463077B02F001F2487 /* LabelMatchWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				ECBF72513077B032001F2487 /* Exceptions for "LabelMatchWidget" folder in "LabelMatchWidgetExtension" target */,
+			);
+			path = LabelMatchWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,15 +135,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECBF723D3077B02F001F2487 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECBF72453077B02F001F2487 /* SwiftUI.framework in Frameworks */,
+				ECBF72433077B02F001F2487 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		EC99387C307794F000A290AC = {
 			isa = PBXGroup;
 			children = (
+				ECED93193077B37A005E2479 /* LabelMatchWidgetExtension.entitlements */,
 				EC993887307794F000A290AC /* LabelMatch */,
 				EC993895307794F100A290AC /* LabelMatchTests */,
 				EC99389F307794F100A290AC /* LabelMatchUITests */,
+				ECBF72463077B02F001F2487 /* LabelMatchWidget */,
+				ECBF72413077B02F001F2487 /* Frameworks */,
 				EC993886307794F000A290AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +166,18 @@
 				EC993885307794F000A290AC /* LabelMatch.app */,
 				EC993892307794F100A290AC /* LabelMatchTests.xctest */,
 				EC99389C307794F100A290AC /* LabelMatchUITests.xctest */,
+				ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ECBF72413077B02F001F2487 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECBF72423077B02F001F2487 /* WidgetKit.framework */,
+				ECBF72443077B02F001F2487 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +190,12 @@
 				EC993881307794F000A290AC /* Sources */,
 				EC993882307794F000A290AC /* Frameworks */,
 				EC993883307794F000A290AC /* Resources */,
+				ECBF72553077B032001F2487 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ECBF724F3077B032001F2487 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				EC993887307794F000A290AC /* LabelMatch */,
@@ -163,6 +253,28 @@
 			productReference = EC99389C307794F100A290AC /* LabelMatchUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECBF72523077B032001F2487 /* Build configuration list for PBXNativeTarget "LabelMatchWidgetExtension" */;
+			buildPhases = (
+				ECBF723C3077B02F001F2487 /* Sources */,
+				ECBF723D3077B02F001F2487 /* Frameworks */,
+				ECBF723E3077B02F001F2487 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				ECBF72463077B02F001F2487 /* LabelMatchWidget */,
+			);
+			name = LabelMatchWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = LabelMatchWidgetExtension;
+			productReference = ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +296,9 @@
 						CreatedOnToolsVersion = 26.3;
 						TestTargetID = EC993884307794F000A290AC;
 					};
+					ECBF723F3077B02F001F2487 = {
+						CreatedOnToolsVersion = 26.3;
+					};
 				};
 			};
 			buildConfigurationList = EC993880307794F000A290AC /* Build configuration list for PBXProject "LabelMatch" */;
@@ -203,6 +318,7 @@
 				EC993884307794F000A290AC /* LabelMatch */,
 				EC993891307794F100A290AC /* LabelMatchTests */,
 				EC99389B307794F100A290AC /* LabelMatchUITests */,
+				ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +339,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EC99389A307794F100A290AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECBF723E3077B02F001F2487 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +376,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECBF723C3077B02F001F2487 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +395,11 @@
 			isa = PBXTargetDependency;
 			target = EC993884307794F000A290AC /* LabelMatch */;
 			targetProxy = EC99389D307794F100A290AC /* PBXContainerItemProxy */;
+		};
+		ECBF724F3077B032001F2487 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */;
+			targetProxy = ECBF724E3077B032001F2487 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -395,6 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LabelMatch/LabelMatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47W4AWVQUK;
@@ -427,6 +563,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LabelMatch/LabelMatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47W4AWVQUK;
@@ -538,6 +675,68 @@
 			};
 			name = Release;
 		};
+		ECBF72533077B032001F2487 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LabelMatchWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47W4AWVQUK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LabelMatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LabelMatchWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.diganta.LabelMatch.LabelMatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ECBF72543077B032001F2487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LabelMatchWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47W4AWVQUK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LabelMatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LabelMatchWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.diganta.LabelMatch.LabelMatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -573,6 +772,15 @@
 			buildConfigurations = (
 				EC9938AD307794F100A290AC /* Debug */,
 				EC9938AE307794F100A290AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECBF72523077B032001F2487 /* Build configuration list for PBXNativeTarget "LabelMatchWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECBF72533077B032001F2487 /* Debug */,
+				ECBF72543077B032001F2487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
