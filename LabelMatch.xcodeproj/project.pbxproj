@@ -10,6 +10,7 @@
 		ECBF72433077B02F001F2487 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBF72423077B02F001F2487 /* WidgetKit.framework */; };
 		ECBF72453077B02F001F2487 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBF72443077B02F001F2487 /* SwiftUI.framework */; };
 		ECBF72503077B032001F2487 /* LabelMatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ECED938D3077B6F1005E2479 /* LabelMatchShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ECED93833077B6F0005E2479 /* LabelMatchShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,13 @@
 			remoteGlobalIDString = ECBF723F3077B02F001F2487;
 			remoteInfo = LabelMatchWidgetExtension;
 		};
+		ECED938B3077B6F1005E2479 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC99387D307794F000A290AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECED93823077B6F0005E2479;
+			remoteInfo = LabelMatchShare;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +52,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				ECBF72503077B032001F2487 /* LabelMatchWidgetExtension.appex in Embed Foundation Extensions */,
+				ECED938D3077B6F1005E2479 /* LabelMatchShare.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +67,7 @@
 		ECBF72423077B02F001F2487 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		ECBF72443077B02F001F2487 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		ECED93193077B37A005E2479 /* LabelMatchWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LabelMatchWidgetExtension.entitlements; sourceTree = "<group>"; };
+		ECED93833077B6F0005E2479 /* LabelMatchShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LabelMatchShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -81,6 +91,13 @@
 				Services/PersistenceController.swift,
 			);
 			target = ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */;
+		};
+		ECED93903077B6F1005E2479 /* Exceptions for "LabelMatchShare" folder in "LabelMatchShare" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = ECED93823077B6F0005E2479 /* LabelMatchShare */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -109,6 +126,14 @@
 				ECBF72513077B032001F2487 /* Exceptions for "LabelMatchWidget" folder in "LabelMatchWidgetExtension" target */,
 			);
 			path = LabelMatchWidget;
+			sourceTree = "<group>";
+		};
+		ECED93843077B6F0005E2479 /* LabelMatchShare */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				ECED93903077B6F1005E2479 /* Exceptions for "LabelMatchShare" folder in "LabelMatchShare" target */,
+			);
+			path = LabelMatchShare;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -144,6 +169,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECED93803077B6F0005E2479 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -155,6 +187,7 @@
 				EC993895307794F100A290AC /* LabelMatchTests */,
 				EC99389F307794F100A290AC /* LabelMatchUITests */,
 				ECBF72463077B02F001F2487 /* LabelMatchWidget */,
+				ECED93843077B6F0005E2479 /* LabelMatchShare */,
 				ECBF72413077B02F001F2487 /* Frameworks */,
 				EC993886307794F000A290AC /* Products */,
 			);
@@ -167,6 +200,7 @@
 				EC993892307794F100A290AC /* LabelMatchTests.xctest */,
 				EC99389C307794F100A290AC /* LabelMatchUITests.xctest */,
 				ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */,
+				ECED93833077B6F0005E2479 /* LabelMatchShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,6 +230,7 @@
 			);
 			dependencies = (
 				ECBF724F3077B032001F2487 /* PBXTargetDependency */,
+				ECED938C3077B6F1005E2479 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				EC993887307794F000A290AC /* LabelMatch */,
@@ -275,6 +310,28 @@
 			productReference = ECBF72403077B02F001F2487 /* LabelMatchWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		ECED93823077B6F0005E2479 /* LabelMatchShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECED93913077B6F1005E2479 /* Build configuration list for PBXNativeTarget "LabelMatchShare" */;
+			buildPhases = (
+				ECED937F3077B6F0005E2479 /* Sources */,
+				ECED93803077B6F0005E2479 /* Frameworks */,
+				ECED93813077B6F0005E2479 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				ECED93843077B6F0005E2479 /* LabelMatchShare */,
+			);
+			name = LabelMatchShare;
+			packageProductDependencies = (
+			);
+			productName = LabelMatchShare;
+			productReference = ECED93833077B6F0005E2479 /* LabelMatchShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -299,6 +356,9 @@
 					ECBF723F3077B02F001F2487 = {
 						CreatedOnToolsVersion = 26.3;
 					};
+					ECED93823077B6F0005E2479 = {
+						CreatedOnToolsVersion = 26.3;
+					};
 				};
 			};
 			buildConfigurationList = EC993880307794F000A290AC /* Build configuration list for PBXProject "LabelMatch" */;
@@ -319,6 +379,7 @@
 				EC993891307794F100A290AC /* LabelMatchTests */,
 				EC99389B307794F100A290AC /* LabelMatchUITests */,
 				ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */,
+				ECED93823077B6F0005E2479 /* LabelMatchShare */,
 			);
 		};
 /* End PBXProject section */
@@ -346,6 +407,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		ECBF723E3077B02F001F2487 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECED93813077B6F0005E2479 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,6 +451,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECED937F3077B6F0005E2479 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -400,6 +475,11 @@
 			isa = PBXTargetDependency;
 			target = ECBF723F3077B02F001F2487 /* LabelMatchWidgetExtension */;
 			targetProxy = ECBF724E3077B032001F2487 /* PBXContainerItemProxy */;
+		};
+		ECED938C3077B6F1005E2479 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECED93823077B6F0005E2479 /* LabelMatchShare */;
+			targetProxy = ECED938B3077B6F1005E2479 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -737,6 +817,64 @@
 			};
 			name = Release;
 		};
+		ECED938E3077B6F1005E2479 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LabelMatchShare/LabelMatchShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47W4AWVQUK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LabelMatchShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LabelMatchShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.diganta.LabelMatch.LabelMatchShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ECED938F3077B6F1005E2479 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LabelMatchShare/LabelMatchShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47W4AWVQUK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LabelMatchShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LabelMatchShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.diganta.LabelMatch.LabelMatchShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -781,6 +919,15 @@
 			buildConfigurations = (
 				ECBF72533077B032001F2487 /* Debug */,
 				ECBF72543077B032001F2487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECED93913077B6F1005E2479 /* Build configuration list for PBXNativeTarget "LabelMatchShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECED938E3077B6F1005E2479 /* Debug */,
+				ECED938F3077B6F1005E2479 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

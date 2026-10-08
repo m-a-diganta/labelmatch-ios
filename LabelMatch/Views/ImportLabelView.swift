@@ -5,6 +5,7 @@ import PhotosUI
 struct ImportLabelView: View {
     @ObservedObject var viewModel: LabelCheckViewModel
     @State private var pickedItem: PhotosPickerItem?
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         Form {
@@ -57,6 +58,11 @@ struct ImportLabelView: View {
         .navigationTitle("Check a label")
         .onAppear {
             viewModel.refreshInbox()
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                viewModel.refreshInbox()
+            }
         }
         .onChange(of: pickedItem) { _, newItem in
             guard let newItem = newItem else { return }
